@@ -3,51 +3,61 @@
 
 class Pawn():
 
-    # Constructor of the class
-    def __init__(self, color, column, row):
+    test_grid = [['.', '.', '.', '.'],
+                 ['X', 'X', '.', 'O'], 
+                 ['X', 'O', 'O', 'X'],
+                 ['X', 'O', 'X', 'O']]
+
+    '''Constructor of the class'''
+    def __init__(self, color, column):
         self.color = color
         self.column = column
-        self.row = row
-        self.position = (row, column)
+        self.row = 0
+        self.position = (self.row, self.column)
 
     # Return the color of the Pawn
-    def getColor(self):
-        return self.color
-    
+    @property
+    def color(self):
+        return self.__color
+
     # Set a color to the pawn
-    def setColor(self, color):
-        self.color = color
-    
-    # Return the position of the pawn
-    def getPosition(self):
-        return self.position
-    
-    # Set a position to a pawn
-    def setPosition(self, position):
-        self.position = position
+    @color.setter
+    def color(self, color):
+        self.__color = color
 
     # Return the column of the pawn
-    def getColumn(self):
-        return self.column
+    @property
+    def column(self):
+        return self.__column
 
-    # # Set the column of the pawn
-    # def setColumn(self,column):
-    #     if column>=0 or column<=0 and cel.siEmpty():
-    #         self.column = column
-    #     else: 
-    #         raise ValueError('Saisir une colonne valide !')
-
+    # Set a column to a pawn
+    @column.setter
+    def column(self, column):
+        self.__column = column
+    
     # Return the row of the pawn
-    def getRow(self):
-        return self.row
+    @property
+    def row(self):
+        return self.__row
 
-    # # Set the row of the pawn
-    # Je doute encore de l'utilité de cette méthode car le joueur ne choisit que les colonnes et jamais les lignes
-    # def setRow(self,row):
-    #     if row>=0 or row<=0 and cel.siEmpty():
-    #         self.row = row
-    #     else: 
-    #         raise ValueError('Saisir une ligne valide !')
+    @row.setter
+    def row(self, row):
+        self.__row = row
+        
+    # Return the position of the pawn
+    @property
+    def position(self):
+        return self.__position
+    
+    # Set a position to a pawn
+    @position.setter
+    def position(self, position):
+        self.__position = position
 
+    """
+
+    """ 
+    def __str__(self):
+        return f"({self.color}, {self.position})"		   	 				 			     
     
         

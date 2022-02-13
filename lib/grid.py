@@ -15,7 +15,8 @@ class grid:
             raise AttributeError("Please enter grid_size >=4 !")
 
     def _initialize_grid(self, grid_size):
-        return [[0]*grid_size]*grid_size
+        return [ [0]*grid_size for i in range(grid_size)]
+
 
     def display(self):
             print("\n")

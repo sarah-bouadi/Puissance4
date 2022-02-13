@@ -1,6 +1,6 @@
 
 
-class Player():
+class Player:
 
     def __init__(self, id, name, rank):
         self.id = id

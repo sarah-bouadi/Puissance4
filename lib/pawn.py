@@ -1,7 +1,9 @@
 # Classe Pawn, represent the pawn, each one could be Yellow or Red
 
 
-class Pawn():
+class Pawn:
+
+
 
     test_grid = [['.', '.', '.', '.'],
                  ['X', 'X', '.', 'O'], 
@@ -9,16 +11,25 @@ class Pawn():
                  ['X', 'O', 'X', 'O']]
 
     '''Constructor of the class'''
-    def __init__(self, color, column):
+    def __init__(self, column, row=0, color=None):
         self.color = color
         self.column = column
-        self.row = 0
+        self.row = row
         self.position = (self.row, self.column)
 
     # Return the color of the Pawn
     @property
     def color(self):
-        return self.__color
+        """
+        :return: the pawn's color
+        """
+        colors = {1: "red", 2: "yellow"}
+        try:
+            int(self.__color)
+            return colors[self.__color]
+        except Exception as e:
+            print("Veuillez d'abord attribuer une couleur")
+
 
     # Set a color to the pawn
     @color.setter
@@ -54,10 +65,6 @@ class Pawn():
     def position(self, position):
         self.__position = position
 
-    """
 
-    """ 
     def __str__(self):
-        return f"({self.color}, {self.position})"		   	 				 			     
-    
-        
+        return f"({self.color}, {self.position})"

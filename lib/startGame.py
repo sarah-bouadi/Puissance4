@@ -39,4 +39,4 @@ def start_menu():
         start_menu()
 
 def start_game():
-    
+    pass

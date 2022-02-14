@@ -4,17 +4,32 @@ RED_WIN = -4
 YELLOW_PAWN = 1
 YELLOW_WIN = 4
 
-class grid:
+class Grid:
     def __init__(self, grid_size):
+        """
+        Constructor of the grid
+        :param grid_size: int the size of the grid
+        :param matrix: the matrix of the grid
+        """
         self.grid_size = grid_size
-        #self.grid = self._initialize_grid(self.__check_grid_size(grid_size))
+        self.matrix = []
+        #= self._initialize_grid(self.__check_grid_size())
 
-    def getSize(self):
-        return self.grid_size
+    # def getSize(self):
+    #     return self.grid_size
 
-    def __check_grid_size(self, grid_size):
-        if(self.getSize()>=4):
-            return self.getSize()
+    def setSize(self, size):
+        self.grid_size = size
+
+    def getMatrix(self):
+        return self.matrix
+
+    def setMatrix(self):
+        self.matrix = self._initialize_grid(self.__check_grid_size())
+
+    def __check_grid_size(self):
+        if self.grid_size>=4:
+            return self.grid_size
         else:
             raise AttributeError("Please enter grid_size >=4 !")
 

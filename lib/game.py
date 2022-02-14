@@ -74,7 +74,7 @@ class Game:
         try:
             isinstance(pawn, Pawn)
             right_column = pawn.column + 1
-            if right_column >= 0 and isinstance(self.getPawn(grid, right_column, pawn.row), Pawn):
+            if right_column <= grid.getSize() and isinstance(self.getPawn(grid, right_column, pawn.row), Pawn):
                 self.getPawn(grid, right_column, pawn.row)
             else:
                 print("Il n y a pas de voisin à droite")
@@ -82,50 +82,48 @@ class Game:
             raise AttributeError("Mettre un pion valide")
 
 
-    #
-    # def getUpNeighbour(self, pawn):
-    #     """
-    #     return the up side neighbour
-    #     :param pawn: the pawn to test
-    #     :return: up neighbour
-    #     """
-    #     try:
-    #         isinstance(pawn, Pawn)
-    #         left_column = pawn.column - 1
-    #         if isinstance(grid[pawn.row][left_column], Pawn):
-    #             self.getPawn(grid, left_column, pawn.row)
-    #         else:
-    #             print("Il n y a pas de voisin à gauche")
-    #     except ValueError:
-    #         print("Mettre un pion valide")
-    #         raise
-    #
-    # def getDownNeighbour(self, pawn):
-    #     """
-    #     return the down side neighbour
-    #     :param pawn: the pawn to test
-    #     :return: down neighbour
-    #     """
-    #     try:
-    #         isinstance(pawn, Pawn)
-    #         left_column = pawn.column - 1
-    #         if isinstance(grid[pawn.row][left_column], Pawn):
-    #             self.getPawn(grid, left_column, pawn.row)
-    #         else:
-    #             print("Il n y a pas de voisin à gauche")
-    #     except ValueError:
-    #         print("Mettre un pion valide")
-    #         raise
 
-    def checkHorizentalWinner(self,player):
+    def getUpNeighbour(self, grid, pawn):
+        """
+        return the up side neighbour
+        :param pawn: the pawn to test
+        :return: up neighbour
+        """
+        try:
+            isinstance(pawn, Pawn)
+            up_row = pawn.row + 1
+            if up_row <= grid.getSize() and isinstance(self.getPawn(grid, pawn.column, up_row), Pawn):
+                self.getPawn(grid, pawn.column, up_row)
+            else:
+                print("Il n y a pas de voisin en haut")
+        except ValueError:
+            raise AttributeError("Mettre un pion valide")
+
+    def getDownNeighbour(self, pawn):
+        """
+        return the down side neighbour
+        :param pawn: the pawn to test
+        :return: down neighbour
+        """
+        try:
+            isinstance(pawn, Pawn)
+            down_row = pawn.row - 1
+            if down_row >= 0 and isinstance(self.getPawn(grid, pawn.column, down_row), Pawn):
+                self.getPawn(grid, pawn.column, down_row)
+            else:
+                print("Il n y a pas de voisin en bas")
+        except ValueError:
+            raise AttributeError("Mettre un pion valide")
+
+    def checkHorizentalWinner(self, player):
         pass
 
-    def checkVerticalWinner(self,player):
+    def checkVerticalWinner(self, player):
         pass
     
-    def checkLeftDiagonalWinner(self,player):
+    def checkLeftDiagonalWinner(self, player):
         pass
     
-    def checkRightDiagonalWinner(self,player):
+    def checkRightDiagonalWinner(self, player):
         pass
     

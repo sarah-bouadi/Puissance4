@@ -1,14 +1,8 @@
 # Classe Pawn, represent the pawn, each one could be Yellow or Red
+from lib.grid import *
 
-
+COLORS = {1: "red", 2: "yellow"}
 class Pawn:
-
-
-
-    test_grid = [['.', '.', '.', '.'],
-                 ['X', 'X', '.', 'O'], 
-                 ['X', 'O', 'O', 'X'],
-                 ['X', 'O', 'X', 'O']]
 
     '''Constructor of the class'''
     def __init__(self, column, row=0, color=None):
@@ -23,27 +17,36 @@ class Pawn:
         """
         :return: the pawn's color
         """
-        colors = {1: "red", 2: "yellow"}
+
         try:
             int(self.__color)
-            return colors[self.__color]
+            return COLORS[self.__color]
         except Exception as e:
             print("Veuillez d'abord attribuer une couleur")
 
 
-    # Set a color to the pawn
     @color.setter
     def color(self, color):
+        """
+        color setter
+        :param color: (1: red, 2: yellow)
+        """
         self.__color = color
 
-    # Return the column of the pawn
     @property
     def column(self):
+        """
+        column getter
+        :return: the pawn's column
+        """
         return self.__column
 
-    # Set a column to a pawn
     @column.setter
     def column(self, column):
+        """
+        column setter
+        :param column: the column to attribute
+        """
         self.__column = column
     
     # Return the row of the pawn

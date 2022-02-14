@@ -6,16 +6,20 @@ YELLOW_WIN = 4
 
 class grid:
     def __init__(self, grid_size):
-        self.grid = self._initialize_grid(self.__check_grid_size(grid_size))
-        
+        self.grid_size = grid_size
+        #self.grid = self._initialize_grid(self.__check_grid_size(grid_size))
+
+    def getSize(self):
+        return self.grid_size
+
     def __check_grid_size(self, grid_size):
-        if(grid_size>=4):
-            return grid_size
+        if(self.getSize()>=4):
+            return self.getSize()
         else:
             raise AttributeError("Please enter grid_size >=4 !")
 
     def _initialize_grid(self, grid_size):
-        return [ [0]*grid_size for i in range(grid_size)]
+        return [[0]*grid_size for i in range(grid_size)]
 
 
     def display(self):

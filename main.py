@@ -1,18 +1,24 @@
 from lib.pawn import *
 from lib.game import *
 from lib.player import *
+from lib.grid import *
 
 if __name__ == "__main__":
-
-    test_grid = [['.', '.', '.', '.'],
-                 ['X', 'X', '.', 'O'],
-                 ['X', 'O', 'O', 'X'],
-                 ['X', 'O', 'X', 'O']]
-
-    massi = Player(1, "Massi", 1)
-    jeu = Game((4, 4), massi)
-
-    pion = Pawn(2, 0, 1)
+    pion = Pawn(2, 4, 1)
     pion_left = Pawn(1, 0, 2)
 
-    jeu.getLeftNeighbour(pion)
+    test_grid = [
+                 ['X', 'X', pion, 'O'],
+                 ['.', '.', '.', '.'],
+                 ['X', 'X', '.', 'O'],
+                 ['X', 'O', 'O', 'X'],
+                 ['X', pion_left, pion, 'O']]
+    # grille = grid(4)
+    massi = Player(1, "Massi", 1)
+    jeu = Game(test_grid, massi)
+    print(pion)
+    print(pion_left)
+    #print(test_grid[pion_left.row][pion_left.column])
+
+
+    jeu.getLeftNeighbour(test_grid, pion)

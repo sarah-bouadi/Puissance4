@@ -36,19 +36,12 @@ class Game:
         :param row: the row to check
         :return: the pawn at the position (column, grid) or raise an error if no pawn
         """
-        # if isinstance(game.getPawn(grid,column,row), Pawn):
-        #     raise("il existe un pion a cette position")
-        # else:
-        #     i=grid.size
-        #     while(i<)
-        #     row =
-        #     grid.matrix[row][column] = Pawn(column, row, color)
-
         try:
             if isinstance(grid.matrix[row][column], Pawn):
-                print(grid.matrix[row][column])
+                return grid.matrix[row][column]
             else:
                 print("il n y a pas de pion à cette position")
+                return 0
         except:
             print("saisir une position valide sur la grille")
 

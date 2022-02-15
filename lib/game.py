@@ -36,6 +36,14 @@ class Game:
         :param row: the row to check
         :return: the pawn at the position (column, grid) or raise an error if no pawn
         """
+        # if isinstance(game.getPawn(grid,column,row), Pawn):
+        #     raise("il existe un pion a cette position")
+        # else:
+        #     i=grid.size
+        #     while(i<)
+        #     row =
+        #     grid.matrix[row][column] = Pawn(column, row, color)
+
         try:
             if isinstance(grid.matrix[row][column], Pawn):
                 print(grid.matrix[row][column])
@@ -82,7 +90,6 @@ class Game:
             raise AttributeError("Mettre un pion valide")
 
 
-
     def getUpNeighbour(self, grid, pawn):
         """
         return the up side neighbour
@@ -115,6 +122,8 @@ class Game:
         except ValueError:
             raise AttributeError("Mettre un pion valide")
 
+
+
     def checkHorizentalWinner(self, player):
         pass
 
@@ -127,3 +136,5 @@ class Game:
     def checkRightDiagonalWinner(self, player):
         pass
     
+    def checkWinner(self):
+        return checkHorizentalWinner(self, player) or

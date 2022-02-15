@@ -15,8 +15,8 @@ class Grid:
         self.matrix = []
         #= self._initialize_grid(self.__check_grid_size())
 
-    # def getSize(self):
-    #     return self.grid_size
+    def getSize(self):
+        return self.grid_size
 
     def setSize(self, size):
         self.grid_size = size
@@ -24,7 +24,7 @@ class Grid:
     def getMatrix(self):
         return self.matrix
 
-    def setMatrix(self):
+    def initMatrix(self):
         self.matrix = self._initialize_grid(self.__check_grid_size())
 
     def __check_grid_size(self):

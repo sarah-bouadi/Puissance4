@@ -4,11 +4,11 @@ from lib.player import *
 from lib.grid import *
 
 if __name__ == "__main__":
-    pion = Pawn(2, 4, 1)
-    pion_left = Pawn(1, 0, 2)
+    pion = Pawn(1)
+    pion_left = Pawn(2)
 
     test_grid_2 = Grid(4)
-    test_grid_2.setMatrix()
+    test_grid_2.initMatrix()
     # grille = grid(4)
     Massi = Player(1, "Massi", 1)
     jeu = Game(test_grid_2, Massi)

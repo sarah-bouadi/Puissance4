@@ -5,7 +5,7 @@ COLORS = {1: "red", 2: "yellow"}
 class Pawn:
 
     '''Constructor of the class'''
-    def __init__(self, column, row=0, color=None):
+    def __init__(self, color=None):
         self.color = color
         self.column = column
         self.row = row

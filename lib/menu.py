@@ -6,7 +6,6 @@ class Menu:
     def __init__(self) -> None:
         pass
 
-
     def input_quit_game(self):
         confirmation_quit = input("Are you sure to quit the game ? (y/n)")
         if confirmation_quit.lower() == 'y':
@@ -35,21 +34,7 @@ class Menu:
         print("- 1 - Start a new game")
         print("- 2 - Continue a game ")
         print("- 3 - Quit", end="\n\n")
-
-    def start_menu(self):
-        start_choice = self.input_entering("- Please enter your choice: ",[1,2,3])
-
-        #Create a new game
-        if start_choice == 1:
-            self.print_game_mode_menu()
-            self.game_mode_menu()
-        #Continue a saved game
-        elif start_choice == 2:
-            pass
-            #startGame()
-        #Quit the game
-        elif start_choice == 3:
-            self.input_quit_game()
+ 
 
     def print_game_mode_menu(self):
         print("##### Game Mode #####", end="\n\n")
@@ -65,8 +50,7 @@ class Menu:
             self.initialize_P_vs_P()
         #Continue a saved game
         elif start_choice == 2:
-            pass
-            #startGame()
+            self.initialize_P_vs_computer()
         #Quit the game
         elif start_choice == 3:
             self.input_quit_game()
@@ -95,4 +79,5 @@ class Menu:
                 
 
 def start_game():
-    pass
+    print_start_menu()
+    start_menu()

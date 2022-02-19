@@ -1,9 +1,3 @@
-EMPTY_GRID = 0
-RED_PAWN = -1
-RED_WIN = -4
-YELLOW_PAWN = 1
-YELLOW_WIN = 4
-
 class Grid:
     def __init__(self, grid_size):
         """

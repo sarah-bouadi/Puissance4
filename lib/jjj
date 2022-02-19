@@ -1,0 +1,46 @@
+
+    def display(self):
+        grid_txt = ""
+        self.grid_to_save = self.initMatrix()
+
+        print("\n")
+        for i in range(len(self.grid)):
+            for j in range(len(self.grid[i])):
+                if x:
+                    grid_txt += ' X '
+                    self.grid_to_save[i][j] = 'X'
+                elif o:
+                    grid_txt += ' O '
+                    self.grid_to_save[i][j] = '0'
+                elif none:
+                    grid_txt += ' . '
+                    self.grid_to_save[i][j] = '.'
+                #print(self.grid[i][j], end=' ')
+            grid_txt += '\n'
+            #print()
+        grid_txt += '\n'    
+        print("\n")
+        return grid_txt
+
+    def __str__(self):
+        return self.display()
+
+
+
+
+        def get_grid_row_from_column(self, grid, column):
+        row = grid.grid_size
+        while grid.matrix[row][column] != None:
+            row -= 1
+        if row == 0:
+            print("The column is full!")
+            return None
+        return row
+
+    def add_pawn_grid(self, pawn, grid, column):
+        row = self.get_grid_row_from_column(grid, column)
+        if row is not None:
+            pawn.row, pawn.column = row, column
+            grid.matrix[row][column] = pawn
+        else:
+            print("Column is full, please choose another column")

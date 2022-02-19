@@ -1,25 +1,20 @@
 
 
+    #Initialize the grid with grid_size     
+from lib.pawn import *
+from lib.game import *
 import lib.menu as sg
 
-def game_mode_menu(self):    
-    start_choice = self.input_entering("- Please enter your choice: ",[1,2,3])
 
-    #Create a new game
-    if start_choice == 1:
-        self.initialize_P_vs_P()
-    #Continue a saved game
-    elif start_choice == 2:
-        self.initialize_P_vs_computer()
-    #Quit the game
-    elif start_choice == 3:
-        self.input_quit_game()
+def game_init():
+    start_game = sg.Start_Game()
 
-def initialize_grid(self, grid):
-    print("-****** Grid Size ******-", end='\n')
-    grid_size = input("- Please enter the grid size: ", list(range(100)))
+    start_game.print_start_menu()
+    start_game.start_menu_choices()
 
-    #Initialize the grid with grid_size        
+    start_game.print_game_mode_menu()
+    start_game.game_mode_choices()
+
 
 if __name__ == "__main__":
-    sg.start_menu()       
+    game_init()

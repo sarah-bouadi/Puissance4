@@ -14,13 +14,17 @@ if __name__ == "__main__":
     grid.display()
 
     row = grid.get_grid_row_from_column(2)
-    #print(row)
-    grid.add_pawn_grid(pion_rouge, 0)
-    grid.add_pawn_grid(pion_jaune, 0)
-    grid.add_pawn_grid(pion_jaune, 0)
-    grid.add_pawn_grid(pion_jaune, 2)
-    grid.add_pawn_grid(pion_rouge, 1)
-    grid.display()
 
     player_naruto = Player(1, "Naruto")
     print(player_naruto)
+
+    #print(row)
+    player_naruto.add_pawn_grid(grid, 1, 0)
+    player_naruto.add_pawn_grid(grid, 2, 0)
+    player_naruto.add_pawn_grid(grid, 2, 0)
+    player_naruto.add_pawn_grid(grid, 2, 0)
+    player_naruto.add_pawn_grid(grid, 2, 0)
+    player_naruto.add_pawn_grid(grid, 2, 2)
+    player_naruto.add_pawn_grid(grid, 1, 1)
+    grid.display()
+

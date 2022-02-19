@@ -1,5 +1,4 @@
 # Classe Pawn, represent the pawn, each one could be Yellow or Red
-from lib.grid import *
 
 COLORS = {1: "red", 2: "yellow"}
 class Pawn:
@@ -7,9 +6,9 @@ class Pawn:
     '''Constructor of the class'''
     def __init__(self, color=None):
         self.color = color
-        self.column = column
-        self.row = row
-        self.position = (self.row, self.column)
+        self.column = int()
+        self.row = int()
+        self.position = self._get_pawn_position()
 
     # Return the color of the Pawn
     @property
@@ -68,6 +67,8 @@ class Pawn:
     def position(self, position):
         self.__position = position
 
+    def _get_pawn_position(self):
+        return (self.row, self.column)
 
     def __str__(self):
-        return f"({self.color}, {self.position})"
+        return f"({self.color}, {self._get_pawn_position()})"

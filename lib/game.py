@@ -129,5 +129,5 @@ class Game:
     def checkRightDiagonalWinner(self, player):
         pass
     
-    def checkWinner(self):
-        return checkHorizentalWinner(self, player) or
+    # def checkWinner(self):
+    #     return checkHorizentalWinner(self, player) or

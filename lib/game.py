@@ -172,6 +172,7 @@ class Game:
                 """
         pass
 
+
     def checkWinner(self, player, pawn):
         """
         checks if there is a winner

@@ -1,23 +1,20 @@
 
-import lib.startGame as sg
+
+    #Initialize the grid with grid_size     
 from lib.pawn import *
 from lib.game import *
-from lib.player import *
-from lib.grid import *
+import lib.menu as sg
+
+
+def game_init():
+    start_game = sg.Start_Game()
+
+    start_game.print_start_menu()
+    start_game.start_menu_choices()
+
+    start_game.print_game_mode_menu()
+    start_game.game_mode_choices()
+
 
 if __name__ == "__main__":
-    pion = Pawn(1)
-    pion_left = Pawn(2)
-
-    test_grid_2 = Grid(4)
-    test_grid_2.initMatrix()
-    # grille = grid(4)
-    Massi = Player(1, "Massi", 1)
-    jeu = Game(test_grid_2, Massi)
-    print(pion)
-    print(pion_left)
-
-    print(test_grid_2.getMatrix())
-
-    #print(test_grid[pion_left.row][pion_left.column])
-    jeu.getRightNeighbour(test_grid_2, pion_left)
+    game_init()

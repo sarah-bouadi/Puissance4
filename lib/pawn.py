@@ -71,4 +71,7 @@ class Pawn:
         return (self.row, self.column)
 
     def __str__(self):
-        return f"({self.color}, {self._get_pawn_position()})"
+        if self.color == 1:
+            return "X"
+        else:
+            return "O"

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1498529d-3ac1-4230-ba13-45f9905044ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/juba_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/grid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/souleman_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/souleman_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pawn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,8 +109,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.puissance4" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.puissance4" />
       <item itemvalue="Python.souleman_test" />
     </list>
     <recent_temporary>

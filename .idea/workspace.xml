@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1498529d-3ac1-4230-ba13-45f9905044ec" name="Changes" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+>>>>>>> develop
       <change beforePath="$PROJECT_DIR$/lib/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pawn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

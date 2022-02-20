@@ -1,3 +1,4 @@
+from re import X
 from lib.pawn import *
 
 class Grid:
@@ -11,6 +12,7 @@ class Grid:
         self.matrix = []
         #= self._initialize_grid(self.__check_grid_size())
 
+
     def getSize(self):
         return self.grid_size
 
@@ -19,6 +21,9 @@ class Grid:
 
     def getMatrix(self):
         return self.matrix
+
+    def setMatrix(self,matrix):
+        self.matrix = matrix
 
     def initMatrix(self):
         self.matrix = self._initialize_grid(self.__check_grid_size())
@@ -58,5 +63,22 @@ class Grid:
         grid_txt += '\n'
         return grid_txt
 
+    def convert_gridtxt_gridobject(self,grid_txt):
+
+        grid_object = self._initialize_grid(self.getSize)
+
+        for i in range(self.getSize()):
+            for j in range(self.getSize()):
+                if grid_txt[i][j] == 'X' :
+                    grid_object[i][j] = Pawn(1)
+                elif grid_txt[i][j] == 'O' :
+                    grid_object[i][j] = Pawn(2)
+                else:
+                    grid_object[i][j] = None
+        self.setMatrix(grid_object)
+
     def __str__(self):
         return self.display()
+
+
+    

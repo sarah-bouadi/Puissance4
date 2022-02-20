@@ -71,7 +71,9 @@ class Pawn:
         return (self.row, self.column)
 
     def __str__(self):
-        if self.color == 1:
-            return "X"
+        if self.color == "red":
+            return " X "
         else:
-            return "O"
+            return " O "
+
+            

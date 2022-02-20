@@ -28,3 +28,5 @@ if __name__ == "__main__":
     player_naruto.add_pawn_grid(grid, 1, 1)
     grid.display()
 
+
+    #Develop testadd

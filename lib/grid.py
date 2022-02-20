@@ -1,4 +1,5 @@
 from lib.pawn import *
+
 class Grid:
     def __init__(self, grid_size):
         """
@@ -39,16 +40,6 @@ class Grid:
             print("The column is full!")
             return None
         return row
-
-    def add_pawn_grid(self, pawn, column):
-        row = self.get_grid_row_from_column(column)
-        if row is not None:
-            pawn.row = row
-            print("row:", pawn.row)
-            pawn.column = column
-            self.matrix[row][column] = pawn
-        else:
-            print("Column is full, please choose another column")
 
     def display(self):
         grid_txt = ""

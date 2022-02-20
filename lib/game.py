@@ -1,6 +1,7 @@
 # Class Game, define the environement of the game and it rules
 from lib.pawn import *
 from lib.grid import *
+from lib.player import *
 
 class Game:
     #grid = [[Pawn(0, 0, 2), Pawn(1, 0, 1)],[Pawn(0, 1, 1), Pawn(1, 1, 1)]]
@@ -99,7 +100,8 @@ class Game:
         except ValueError:
             raise AttributeError("Mettre un pion valide")
 
-    def getDownNeighbour(self, pawn):
+
+    def getDownNeighbour(self, grid, pawn):
         """
         return the down side neighbour
         :param pawn: the pawn to test
@@ -117,17 +119,65 @@ class Game:
 
 
 
-    def checkHorizentalWinner(self, player):
-        pass
+    def checkHorizentalWinner(self, grid, player, pawn):
+        """
+        return 1 if there's an horizental winner, else 0
+        :param player: the player who played the pawn
+        :param pawn: the played pawn
+        :return: true or false
+        """
+        cpt = 0
+        if self.getLeftNeighbour(grid, pawn).color != pawn.color:
+            if self.getRightNeighbour(grid, pawn).color != pawn.color:
+                return 0
+            else:
+                cpt += 1
+                self.checkHorizentalWinner(grid, player, pawn)
+        print(f'{player.getName()} wins the game')
+        return cpt >= 4
 
-    def checkVerticalWinner(self, player):
-        pass
+    def checkVerticalWinner(self, player, grid, pawn):
+        """
+                return 1 if there's a vertical winner, else 0
+                :param grid: the grid of the game
+                :param player: the player who played the pawn
+                :param pawn: the played pawn
+                :return: int 1 or 0
+                """
+        cpt = 0
+        if self.getDownNeighbour(grid, pawn).color != pawn.color:
+            if self.getUpNeighbour(grid, pawn).color != pawn.color:
+                return 0
+            else:
+                cpt += 1
+                self.checkVerticalWinner(grid, player, pawn)
+        print(f'{player.getName()} wins the game')
+        return cpt >= 4
     
     def checkLeftDiagonalWinner(self, player):
+        """
+                return 1 if there's a diagonal left winner, else 0
+                :param player: the player who played the pawn
+                :param pawn: the played pawn
+                :return: int 1 or 0
+                """
         pass
     
     def checkRightDiagonalWinner(self, player):
+        """
+                return 1 if there's a diagonal right winner, else 0
+                :param player: the player who played the pawn
+                :param pawn: the played pawn
+                :return: int 1 or 0
+                """
         pass
-    
-    # def checkWinner(self):
-    #     return checkHorizentalWinner(self, player) or
+
+
+    def checkWinner(self, player, pawn):
+        """
+        checks if there is a winner
+        :param player: the player to check
+        :param pawn: the last pawn added
+        :return: True if player won else false
+        """
+        return self.checkHorizentalWinner(player, pawn) or self.checkVerticalWinner(player, pawn) or self.checkLeftDiagonalWinner(player, pawn) or self.checkRightDiagonalWinner(player, pawn)

@@ -4,6 +4,7 @@ grid = Grid(4)
 
 grid.initMatrix()
 
+
 grid.display()
 
 print(grid)
@@ -29,7 +30,18 @@ player_naruto.add_pawn_grid(grid, 2, 0)
 player_naruto.add_pawn_grid(grid, 2, 0)
 player_naruto.add_pawn_grid(grid, 2, 2)
 player_naruto.add_pawn_grid(grid, 1, 1)
-
+player_naruto.add_pawn_grid(grid, 1, 1)
+player_naruto.add_pawn_grid(grid, 1, 1)
+player_naruto.add_pawn_grid(grid, 1, 1)
+player_naruto.add_pawn_grid(grid, 2, 2)
+player_naruto.add_pawn_grid(grid, 2, 2)
+player_naruto.add_pawn_grid(grid, 2, 2)
+player_naruto.add_pawn_grid(grid, 2, 3)
+player_naruto.add_pawn_grid(grid, 2, 3)
+player_naruto.add_pawn_grid(grid, 2, 3)
+player_naruto.add_pawn_grid(grid, 2, 3)
 
 print(grid)
 
+grid.isFull()
+print(grid.isFull())

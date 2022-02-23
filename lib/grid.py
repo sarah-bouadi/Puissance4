@@ -34,6 +34,13 @@ class Grid:
         else:
             raise AttributeError("Please enter grid_size >=4 !")
 
+    def isFull(self):
+        for i in range(self.getSize()):
+            for j in range(self.getSize()):
+                if self.matrix[i][j] == None:
+                    return False
+        return True
+
     def _initialize_grid(self, grid_size):
         return [[None]*grid_size for i in range(grid_size)]
 

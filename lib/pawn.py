@@ -75,5 +75,3 @@ class Pawn:
             return " X "
         else:
             return " O "
-
-            

@@ -67,7 +67,6 @@ class Player:
         row = grid.get_grid_row_from_column(column)
         if row is not None:
             pawn.row = row
-            print("row:", pawn.row, "column:", column)
             pawn.column = column
             grid.matrix[row][column] = pawn
         else:

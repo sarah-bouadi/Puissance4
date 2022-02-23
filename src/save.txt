@@ -1,4 +1,10 @@
-.,.,.,.,
-X,X,.,O,
-X,.,O,.,
-X,O,.,O,
+SAVE DATE: 23/02/2022
+GAME MODE: Player VS Player
+PLAYER1: fsdf 1
+PLAYER2: SFSD 2
+GRID_SIZE: 4
+
+ . , . , . , . ,
+ O , . , . , . ,
+ O , . , . , . ,
+ X , X , O , . ,

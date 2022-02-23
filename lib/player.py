@@ -23,42 +23,67 @@ class Player:
         """
         self.__name = name
 
-        @property
-        def choosen_color(self):
-            """
-            choosen_color getter
-            :return: the player's choosen_color
-            """
-            return self.__choosen_color
+    @property
+    def choosen_color(self):
+        """
+        choosen_color getter
+        :return: the player's choosen_color
+        """
+        return self.__choosen_color
 
-        @choosen_color.setter
-        def choosen_color(self, choosen_color):
-            """
-            choosen_color setter
-            :param choosen_color: the choosen_color to attribute
-            """
-            self.__choosen_color = choosen_color
+    @choosen_color.setter
+    def choosen_color(self, choosen_color):
+        """
+        choosen_color setter
+        :param choosen_color: the choosen_color to attribute
+        """
+        self.__choosen_color = choosen_color
 
-            # Returns a tuple like: ((player1_id, player1_name), (player2_id, player2_name))
+        # Returns a tuple like: ((player1_id, player1_name), (player2_id, player2_name))
 
     def initialize_P_vs_P(self):
+        """
+        Return two object instance of 2 human Players with inputed datas
+        
+        :return: A tuple which contains player1 and player2 like
+            (player1, player2)
+
+        """
         player1_name = input("- Enter the name of player 1: ")
         player1_choosen_color = input("- Select your color (1- for red, 2- for yellow):")
 
         player2_name = input("- Enter the name of player 2: ")
         player2_choosen_color = input("- Select your color (1- for red, 2- for yellow):")
-        return (self.__init__(player1_choosen_color, player1_name), self.__init__(player2_choosen_color, player2_name))
+        #Correct player2 input if needs
+        if int(player1_choosen_color) == 1:
+            player2_choosen_color = 2
+        else:
+            player2_choosen_color = 1
+
+        players_datas = (Player(player1_name, int(player1_choosen_color)), Player(player2_name, int(player2_choosen_color)))
+        return players_datas
 
     # Returns a tuple like: ((player1_id, player1_name), (player2_id, player2_name))
     def initialize_P_vs_computer(self):
+        """
+        Return two object instance of 1 human and 1computer Players with inputed datas
+        
+        :return: A tuple which contains player1 and computer like
+            (player1, computer) and with computer data as Nones
+
+        """
         player1_name = input("- Enter the name of player 1: ")
         player1_choosen_color = input("- Select your color (1- for red, 2- for yellow):")
-
-        return ((player1_choosen_color, player1_name), (None, None))
+        if player1_choosen_color == 1:
+            player2_choosen_color = 2
+        else:
+            player2_choosen_color = 1
+        players_datas = (Player(player1_name, player1_choosen_color), Player(None, player2_choosen_color))
+        return players_datas
 
     def add_pawn_grid(self, grid, color, column):
         """
-        add a pawn to a grid or says if the choosen column is full
+        Add a pawn to a grid or says if the choosen column is full
         :param grid: the grid where the pawn will be added
         :param color: the color of the pawn
         :param column: the choosen column

@@ -39,7 +39,7 @@ class Grid:
             for j in range(self.getSize()):
                 if self.matrix[i][j] == None:
                     return False
-        return True
+        return True 
 
     def _initialize_grid(self, grid_size):
         return [[None]*grid_size for i in range(grid_size)]
@@ -65,23 +65,23 @@ class Grid:
                     self.grid_to_save[i][j] = str(self.matrix[i][j])
                 else:
                     grid_txt += ' . '
-                    self.grid_to_save[i][j] = '.'
+                    self.grid_to_save[i][j] = ' . '
             grid_txt += '\n'
         grid_txt += '\n'
         return grid_txt
 
     def convert_gridtxt_gridobject(self,grid_txt):
 
-        grid_object = self._initialize_grid(self.getSize)
+        grid_object = self._initialize_grid(self.getSize())
 
         for i in range(self.getSize()):
             for j in range(self.getSize()):
-                if grid_txt[i][j] == 'X' :
+                if grid_txt[i][j] == ' X ' :
                     grid_object[i][j] = Pawn(1)
-                elif grid_txt[i][j] == 'O' :
+                elif grid_txt[i][j] == ' O ' :
                     grid_object[i][j] = Pawn(2)
                 else:
-                    grid_object[i][j] = None
+                    grid_object[i][j] = 'None'
         self.setMatrix(grid_object)
 
     def __str__(self):

@@ -14,7 +14,7 @@ from lib.player import Player
 
 import os
 
-def saveGame(session_name, grid, player1, player2):
+def saveGame(file_path, grid, player1, player2):
     """
     Save the content of the grid_matrix into src/save.txt
 
@@ -23,7 +23,6 @@ def saveGame(session_name, grid, player1, player2):
     :param player2: the player 2 to use his datas
 
     """
-    file_path = session_name + '.txt'
     with open(file_path, 'w') as f:
         #Game save date
         today = date.today()

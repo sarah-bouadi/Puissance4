@@ -50,19 +50,25 @@ class Player:
             (player1, player2)
 
         """
-        player1_name = input("- Enter the name of player 1: ")
-        player1_choosen_color = input("- Select your color (1- for red, 2- for yellow):")
+        try:
+            player1_name = input("- Enter the name of player 1: ")
+            player1_choosen_color = input("- Select your color (1- for red, 2- for yellow):")
+            if player1_choosen_color not in [1,2]:
+                player1_choosen_color = 1
 
-        player2_name = input("- Enter the name of player 2: ")
-        player2_choosen_color = input("- Select your color (1- for red, 2- for yellow):")
-        #Correct player2 input if needs
-        if int(player1_choosen_color) == 1:
-            player2_choosen_color = 2
-        else:
-            player2_choosen_color = 1
+            player2_name = input("- Enter the name of player 2: ")
+            player2_choosen_color = input("- Select your color (1- for red, 2- for yellow):")
+            #Correct player2 input if needs
+            if int(player1_choosen_color) == 1:
+                player2_choosen_color = 2
+            else:
+                player2_choosen_color = 1
 
-        players_datas = (Player(player1_name, int(player1_choosen_color)), Player(player2_name, int(player2_choosen_color)))
-        return players_datas
+            players_datas = (Player(player1_name, int(player1_choosen_color)), Player(player2_name, int(player2_choosen_color)))
+            return players_datas
+        except Exception as err:
+            print(err)
+            return self.initialize_P_vs_P()
 
     # Returns a tuple like: ((player1_id, player1_name), (player2_id, player2_name))
     def initialize_P_vs_computer(self):
@@ -73,14 +79,18 @@ class Player:
             (player1, computer) and with computer data as Nones
 
         """
-        player1_name = input("- Enter the name of player 1: ")
-        player1_choosen_color = input("- Select your color (1- for red, 2- for yellow):")
-        if player1_choosen_color == 1:
-            player2_choosen_color = 2
-        else:
-            player2_choosen_color = 1
-        players_datas = (Player(player1_name, player1_choosen_color), Player(None, player2_choosen_color))
-        return players_datas
+        try:
+            player1_name = input("- Enter the name of player 1: ")
+            player1_choosen_color = input("- Select your color (1- for red, 2- for yellow):")
+            if player1_choosen_color == 1:
+                player2_choosen_color = 2
+            else:
+                player2_choosen_color = 1
+            players_datas = (Player(player1_name, player1_choosen_color), Player(None, player2_choosen_color))
+            return players_datas
+        except Exception as err:
+            print(err)
+            return self.initialize_P_vs_computer()
 
     def add_pawn_grid(self, grid, column):
         """

@@ -25,17 +25,17 @@ if __name__ == "__main__":
     print(player1, player1.choosen_color)
     print(player2, player2.choosen_color)
 
-    player1.add_pawn_grid(grid, 1, 0)
-    player1.add_pawn_grid(grid, 2, 0)
-    player2.add_pawn_grid(grid, 2, 0)
-    player2.add_pawn_grid(grid, 2, 2)
-    player1.add_pawn_grid(grid, 1, 1)
+    player1.add_pawn_grid(grid, 0)
+    player1.add_pawn_grid(grid, 0)
+    player2.add_pawn_grid(grid, 0)
+    player2.add_pawn_grid(grid, 2)
+    player1.add_pawn_grid(grid, 1)
 
     print(grid.isFull())
 
     print(grid)
     grid.display()
-    saveGame(grid, player1, player2)
+    saveGame('src/save.txt',grid, player1, player2)
     player2.add_pawn_grid(grid, 2, 2)
     player1.add_pawn_grid(grid, 1, 1)
     grid.display()

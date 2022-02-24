@@ -1,4 +1,5 @@
 from re import X
+from warnings import WarningMessage
 from lib.pawn import *
 
 class Grid:
@@ -37,21 +38,18 @@ class Grid:
     def isFull(self):
         for i in range(self.getSize()):
             for j in range(self.getSize()):
-                if self.matrix[i][j] == None:
+                if self.getMatrix()[i][j] == None or self.getMatrix()[i][j] == 'None':
                     return False
         return True 
-
+ 
     def _initialize_grid(self, grid_size):
         return [[None]*grid_size for i in range(grid_size)]
 
     def get_grid_row_from_column(self, column):
-        row = self.grid_size-1
-        while row >= 0 and self.matrix[row][column] != None :
-            row -= 1
-        if row == -1:
-            print("The column is full!")
-            return None
-        return row
+        for i in range(self.grid_size-1, -1,-1):
+            if self.matrix[i][column] == 'None' or self.matrix[i][column] == None:
+                return i
+        return None
 
     def display(self):
         grid_txt = ""

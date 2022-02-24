@@ -47,7 +47,7 @@ class Start_Game:
                 if (entering in good_entering_list) or (int(entering) in good_entering_list):
                     return entering
                 else:
-                    print("*Bad input, your input must b in",good_entering_list)
+                    print("*Bad input, your input must be in",good_entering_list)
                     entering = self.input_entering(msg, good_entering_list)
                     return entering
 
@@ -136,6 +136,7 @@ class Start_Game:
                 print("* Bad size input, you must enter size > 3. Please retry.",end='\n\n')
                 grid_size = self.input_entering("- Please enter the grid size: ", list(range(100)))
 
+            self.game_save_file_path = input("\nType the name of this session(without extension): ")
             self.grid = grid.Grid(int(grid_size))
             self.grid.initMatrix()
             self.display_grid()
@@ -145,15 +146,22 @@ class Start_Game:
             self.game_mode_choices()
         #Continue a saved game
         elif start_choice == 2:
+            self.game_save_file_path = input("\nType the name of the game session (without extension): ")
             print("* Charging last game session......")
-            #Charge str matrix
-            uploadeDatas = save.uploadGame('src/save.txt')
-            self.grid = uploadeDatas[0]
-            self.player1 = uploadeDatas[1]
-            self.player2 = uploadeDatas[2]
-            print("***** Game session charged *****")
-            print(self.grid.isFull())
-            self.play_game()
+            import os
+            if os.path.exists(self.game_save_file_path):
+                #Charge str matrix
+                uploadeDatas = save.uploadGame(self.game_save_file_path+'.txt')
+                self.grid = uploadeDatas[0]
+                self.player1 = uploadeDatas[1]
+                self.player2 = uploadeDatas[2]
+                if self.grid.isFull():
+                    self.grid.initMatrix()
+                print("***** Game session charged *****")
+                self.play_game()
+            else:
+                print("There is no such save file, please start a new game")
+                self.lauch_game()
         #Quit the game
         elif start_choice == 3:
             self.input_quit_game()
@@ -180,18 +188,18 @@ class Start_Game:
             
             our_input = self.input_entering(f"*It is player {self.current_player.name} turn now: ", valid_entries)
             if our_input == 'q':
-                #demand for quit the game
+                #Ask a confirmation to quit the game
                 entery = self.input_entering("Do you really want to quit the game?(y/n)",['y','n'])
                 if entery == 'y':
-                    save.saveGame(self.grid, self.player1, self.player2)
+                    save.saveGame(self.game_save_file_path, self.grid, self.player1, self.player2)
                     exit()
             else:
                 column_input = int(our_input)
 
             #Add a new pawn in the grid
-            self.current_player.add_pawn_grid(self.grid, int(self.current_player.choosen_color), column_input)
+            self.current_player.add_pawn_grid(self.grid, column_input)
             
-            row = self.grid.get_grid_row_from_column(column_input) - 1
+            # row = self.grid.get_grid_row_from_column(column_input) - 1
             #Check the winner
             # game.checkWinner(self.grid,self.grid.matrix[row][column_input], self.player1, self.player2)
             
@@ -199,20 +207,24 @@ class Start_Game:
             self.switch_player()
 
             #Automatic grid save
-            save.saveGame(self.grid, self.player1, self.player2)
-
+            self.grid.display()
+            save.saveGame(self.game_save_file_path, self.grid, self.player1, self.player2)
+          
             if self.grid.isFull():
-                print(self.grid)
-        #Error
-        if self.grid.isFull():
-            print("**** No Winners !****")
-            entery = self.input_entering("Do you want to restart?(y/n)",['y','n'])
-            if entery == 'y':
-                self.print_start_menu()
-                self.start_menu_choices()
-            else:
-                self.grid.initMatrix()
-                self.grid.display()
-                save.saveGame(self.grid, self.player1, self.player2)
+                print("**** No Winners !****")
+                entery = self.input_entering("Do you want to restart?(y/n)",['y','n'])
+                if entery == 'y':
+                    self.grid.initMatrix()
+                    self.grid.display()
+                    save.saveGame(self.game_save_file_path, self.grid, self.player1, self.player2)
 
+                    self.print_start_menu()
+                    self.start_menu_choices()
+                else:
+                    import os
+                    if os.path.exists(self.game_save_file_path+'.txt'):
+                        os.remove(self.game_save_file_path+'.txt')
             
+    def lauch_game(self):
+        self.print_start_menu()
+        self.start_menu_choices()

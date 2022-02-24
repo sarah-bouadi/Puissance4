@@ -7,18 +7,14 @@ Contains Saving and uploading the game grid.
 
 """
 
-SAVE_FILE = r'./src/'
-
-test_grid = [['.', '.', '.', '.'],
-             ['X', 'X', '.', 'O'], 
-             ['X', '.', 'O', '.'],
-             ['X', 'O', '.', 'O']]
-
 from datetime import date
+from pprint import pprint
 from lib.grid import *
 from lib.player import Player
 
-def saveGame(grid, player1, player2):
+import os
+
+def saveGame(session_name, grid, player1, player2):
     """
     Save the content of the grid_matrix into src/save.txt
 
@@ -27,7 +23,8 @@ def saveGame(grid, player1, player2):
     :param player2: the player 2 to use his datas
 
     """
-    with open("src/save.txt", 'w') as f:
+    file_path = session_name + '.txt'
+    with open(file_path, 'w') as f:
         #Game save date
         today = date.today()
         save_date = today.strftime("%d/%m/%Y")
@@ -50,9 +47,10 @@ def saveGame(grid, player1, player2):
         for i in range(grid.getSize()):
             for j in range(grid.getSize()):
                 f.write(grid.grid_to_save[i][j]+',')
-            f.write('\n')             
+            f.write('\n')    
+        pprint(f)         
 
-def uploadGame(filename):
+def uploadGame(file_path):
     """
     Upload the grid matrix from src/save.txt
 
@@ -61,7 +59,7 @@ def uploadGame(filename):
     :return: the grid matrix in str format
 
     """
-    with open(filename,'r') as f:
+    with open(file_path,'r') as f:
         #Player
         savefile = f.readlines()
         game_mode = (savefile[1]).split(" ")
@@ -71,18 +69,17 @@ def uploadGame(filename):
 
         #Charge players datas
         player1 = Player(player1_datas[1], player1_datas[2])
+        
         if game_mode[4] == 'Player\n':
             player2 = Player(player2_datas[1], player2_datas[2])
         else:
             player2 = Player(None, player2_datas[2])
 
         #Charge grid
-        
         grid = Grid(int(grid_size[1].replace('\n','')))
         result_grid = []
         for i in savefile[6:]: 
             row = i.split(',')
             result_grid.append(row[0:-1])
         grid.convert_gridtxt_gridobject(result_grid)
-        print("#####",grid)
         return (grid, player1, player2)

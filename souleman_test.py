@@ -33,8 +33,14 @@ if __name__ == "__main__":
 
     print(grid.isFull())
 
-    # grid.display()
-    # saveGame(grid, player1, player2)
+    print(grid)
+    grid.display()
+    saveGame(grid, player1, player2)
+    player2.add_pawn_grid(grid, 2, 2)
+    player1.add_pawn_grid(grid, 1, 1)
+    grid.display()
+    print(grid, grid.grid_to_save)
+    saveGame(grid, player1, player2)
 
     # del grid, player1, player2
     # print("###################################")

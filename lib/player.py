@@ -1,3 +1,4 @@
+from warnings import WarningMessage
 from lib.pawn import *
 
 
@@ -29,7 +30,7 @@ class Player:
         choosen_color getter
         :return: the player's choosen_color
         """
-        return self.__choosen_color
+        return int(self.__choosen_color)
 
     @choosen_color.setter
     def choosen_color(self, choosen_color):
@@ -81,22 +82,27 @@ class Player:
         players_datas = (Player(player1_name, player1_choosen_color), Player(None, player2_choosen_color))
         return players_datas
 
-    def add_pawn_grid(self, grid, color, column):
+    def add_pawn_grid(self, grid, column):
         """
         Add a pawn to a grid or says if the choosen column is full
         :param grid: the grid where the pawn will be added
         :param color: the color of the pawn
         :param column: the choosen column
         """
-        pawn = Pawn(color)
-        row = grid.get_grid_row_from_column(column)
-        if row is not None:
-            pawn.row = row
-            print("row:", pawn.row, "column:", column)
-            pawn.column = column
-            grid.matrix[row][column] = pawn
-        else:
-            print("Column is full, please choose another column")
+        try:
+            pawn = Pawn(self.choosen_color)
+            row = grid.get_grid_row_from_column(column)
+            if row is not None:
+                pawn.row = row
+                print("row:", pawn.row, "column:", column)
+                pawn.column = column
+                grid.matrix[row][column] = pawn
+                return True
+            else:
+                print("Column is full, please choose another column")
+        except Exception as er:
+            print(er)
+            return False
 
     def __str__(self):
         return "Name: {}; Color: {}".format(self.name, self.choosen_color)

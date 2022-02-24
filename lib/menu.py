@@ -184,6 +184,7 @@ class Start_Game:
         valid_entries = list(range(self.grid.getSize()))
         valid_entries.append('q')
         self.current_player = self.player1
+        self.game = game.Game(self.grid, self.player1, self.player2)
         our_input = 1
         status = False 
         while our_input!='q' and not self.grid.isFull() and not status:
@@ -202,9 +203,16 @@ class Start_Game:
             #Add a new pawn in the grid
             self.current_player.add_pawn_grid(self.grid, column_input)
             
+            
             #Check the winner
-            # row = self.grid.get_grid_row_from_column(column_input) - 1
-            # status = game.checkWinner(self.grid,self.grid.getMatrix()[row][column_input], self.player1, self.player2)
+            row = self.grid.get_grid_row_from_column(column_input)
+            if row is None:
+                print("ééééé",self.grid.matrix[0][column_input])
+                status = self.game.checkWinner(self.grid,self.grid.matrix[0][column_input], self.player1, self.player2)
+            else:
+                row = int(row)-1
+                print("------", row)
+                status = self.game.checkWinner(self.grid,self.grid.matrix[row][column_input], self.player1, self.player2)
             
             #Switch the players
             self.switch_player()

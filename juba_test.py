@@ -19,20 +19,12 @@ if __name__ == "__main__":
     jeu = Game(grille, player1)
 
     player1.add_pawn_grid(grille, 1)
-    player2.add_pawn_grid(grille, 1)
     player1.add_pawn_grid(grille, 1)
-    player2.add_pawn_grid(grille, 1)
-    player1.add_pawn_grid(grille, 2)
+    player1.add_pawn_grid(grille, 1)
+
     player2.add_pawn_grid(grille, 2)
-    player1.add_pawn_grid(grille, 3)
-    player2.add_pawn_grid(grille, 3)
-    player1.add_pawn_grid(grille, 3)
-    player2.add_pawn_grid(grille, 0)
-    player1.add_pawn_grid(grille, 0)
-    player2.add_pawn_grid(grille, 0)
-    player1.add_pawn_grid(grille, 0)
-    player2.add_pawn_grid(grille, 3)
-    player1.add_pawn_grid(grille, 2)
+    player2.add_pawn_grid(grille, 2)
+    player2.add_pawn_grid(grille, 2)
 
     print(grille)
 
@@ -51,4 +43,4 @@ if __name__ == "__main__":
     #print(jeu.count_diagonal_right_neighbour(grille, grille.matrix[2][2]))
     #print(jeu.checkLeftDiagonalWinner(grille, grille.matrix[3][3]))
 
-    print(jeu.checkWinner(grille, grille.matrix[3][3], player1, player2))
+    print(jeu.checkWinner(grille, grille.matrix[1][1], player1, player2))

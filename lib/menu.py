@@ -47,7 +47,7 @@ class Start_Game:
                 if (entering in good_entering_list) or (int(entering) in good_entering_list):
                     return entering
                 else:
-                    print("*Bad input, your input must be in",good_entering_list)
+                    print("*Bad input, your input must be in",good_entering_list, end='\n\n')
                     entering = self.input_entering(msg, good_entering_list)
                     return entering
 
@@ -137,6 +137,7 @@ class Start_Game:
                 grid_size = self.input_entering("- Please enter the grid size: ", list(range(100)))
 
             self.game_save_file_path = input("\nType the name of this session(without extension): ")
+            self.game_save_file_path = 'src/' + self.game_save_file_path + '.txt'
             self.grid = grid.Grid(int(grid_size))
             self.grid.initMatrix()
             self.display_grid()
@@ -147,11 +148,12 @@ class Start_Game:
         #Continue a saved game
         elif start_choice == 2:
             self.game_save_file_path = input("\nType the name of the game session (without extension): ")
+            self.game_save_file_path = 'src/' + self.game_save_file_path + '.txt'
             print("* Charging last game session......")
             import os
             if os.path.exists(self.game_save_file_path):
                 #Charge str matrix
-                uploadeDatas = save.uploadGame(self.game_save_file_path+'.txt')
+                uploadeDatas = save.uploadGame(self.game_save_file_path)
                 self.grid = uploadeDatas[0]
                 self.player1 = uploadeDatas[1]
                 self.player2 = uploadeDatas[2]
@@ -183,7 +185,8 @@ class Start_Game:
         valid_entries.append('q')
         self.current_player = self.player1
         our_input = 1
-        while our_input!='q' and not self.grid.isFull():
+        status = False 
+        while our_input!='q' and not self.grid.isFull() and not status:
             print(self.grid)
             
             our_input = self.input_entering(f"*It is player {self.current_player.name} turn now: ", valid_entries)
@@ -199,9 +202,9 @@ class Start_Game:
             #Add a new pawn in the grid
             self.current_player.add_pawn_grid(self.grid, column_input)
             
-            # row = self.grid.get_grid_row_from_column(column_input) - 1
             #Check the winner
-            # game.checkWinner(self.grid,self.grid.matrix[row][column_input], self.player1, self.player2)
+            # row = self.grid.get_grid_row_from_column(column_input) - 1
+            # status = game.checkWinner(self.grid,self.grid.getMatrix()[row][column_input], self.player1, self.player2)
             
             #Switch the players
             self.switch_player()
@@ -216,14 +219,14 @@ class Start_Game:
                 if entery == 'y':
                     self.grid.initMatrix()
                     self.grid.display()
-                    save.saveGame(self.game_save_file_path, self.grid, self.player1, self.player2)
+                    # save.saveGame(self.game_save_file_path, self.grid, self.player1, self.player2)
 
-                    self.print_start_menu()
-                    self.start_menu_choices()
+                    # self.print_start_menu()
+                    # self.start_menu_choices()
                 else:
                     import os
-                    if os.path.exists(self.game_save_file_path+'.txt'):
-                        os.remove(self.game_save_file_path+'.txt')
+                    if os.path.exists(self.game_save_file_path):
+                        os.remove(self.game_save_file_path)
             
     def lauch_game(self):
         self.print_start_menu()

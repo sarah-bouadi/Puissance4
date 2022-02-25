@@ -1,4 +1,5 @@
 # Classe Pawn, represent the pawn, each one could be Yellow or Red
+from termcolor import colored
 
 COLORS = {1: "red", 2: "yellow"}
 class Pawn:
@@ -72,6 +73,6 @@ class Pawn:
 
     def __str__(self):
         if self.color == "red":
-            return " X "
+            return colored(" X ", "red")
         else:
-            return " O "
+            return colored(" O ", "yellow")

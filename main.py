@@ -4,6 +4,7 @@
 from lib.pawn import *
 from lib.game import *
 import lib.menu as sg
+from termcolor import colored
 
 
 def game_init():

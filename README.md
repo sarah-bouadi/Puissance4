@@ -12,6 +12,9 @@ Implémentation du jeu Puissance 4 en Python
 Jeu de rôle avec interface graphique 2D
 Joueur 1 vs Joueur 2, ou Joueur 1 vs Ordinateur (à confirmer)
 
+#Prérequis:
+- Installer le module termcolor de python
+
 # Déroulé du jeu: 
 * Tout d'abord on dispose d'une grille de dimension N
 * Le but du jeu est d'alligner un certain nombre de pions de façon horizentale, verticale ou diagonale
@@ -19,5 +22,5 @@ Joueur 1 vs Joueur 2, ou Joueur 1 vs Ordinateur (à confirmer)
 * Le joueur font en sorte de bloquer l'adversaire en interrompant sa série
 * Le premier joueur à avoir alligner une série de N pions remporte la partie
 
-# Date de soumission
-26/02/2022
+# Lancement du jeu:
+- Ouvrir le fichier puissance4.bat

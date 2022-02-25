@@ -8,7 +8,7 @@ Start game class, for the user interactions.
 """
 
 from curses.ascii import isdigit
-import lib.grid as grid
+import lib.grid as gridz
 import lib.save as save
 import lib.player as player
 import lib.game as game
@@ -184,7 +184,6 @@ class Start_Game:
         valid_entries = list(range(self.grid.getSize()))
         valid_entries.append('q')
         self.current_player = self.player1
-        self.game = game.Game(self.grid, self.player1, self.player2)
         our_input = 1
         status = False 
         while our_input!='q' and not self.grid.isFull() and not status:
@@ -203,14 +202,9 @@ class Start_Game:
             #Add a new pawn in the grid
             self.current_player.add_pawn_grid(self.grid, column_input)
             
-            
             #Check the winner
-            row = self.grid.get_grid_row_from_column(column_input)
-            if row is None:
-                status = self.game.checkWinner(self.grid,self.grid.matrix[0][column_input], self.player1, self.player2)
-            else:
-                row = int(row)-1
-                status = self.game.checkWinner(self.grid,self.grid.matrix[row][column_input], self.player1, self.player2)
+            # row = self.grid.get_grid_row_from_column(column_input) - 1
+            # status = game.checkWinner(self.grid,self.grid.getMatrix()[row][column_input], self.player1, self.player2)
             
             #Switch the players
             self.switch_player()

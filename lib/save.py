@@ -46,8 +46,7 @@ def saveGame(file_path, grid, player1, player2):
         for i in range(grid.getSize()):
             for j in range(grid.getSize()):
                 f.write(grid.grid_to_save[i][j]+',')
-            f.write('\n')    
-        pprint(f)         
+            f.write('\n')
 
 def uploadGame(file_path):
     """

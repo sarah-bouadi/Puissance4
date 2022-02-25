@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
 
     jeu = Game(grille, player1, player2)
-    jeu.grid = grille
+    #jeu.grid = grille
 
     print(grille)
 

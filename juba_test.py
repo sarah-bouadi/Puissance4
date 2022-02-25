@@ -13,10 +13,11 @@ if __name__ == "__main__":
 
     grille = Grid(4)
     grille.initMatrix()
+    print(grille)
     pion = Pawn(1)
     player1 = Player("Reda", 1)
     player2 = Player("Souleman", 2)
-    jeu = Game(grille, player1)
+
 
     player1.add_pawn_grid(grille, 1, 1)
     player2.add_pawn_grid(grille, 2, 1)
@@ -33,6 +34,10 @@ if __name__ == "__main__":
     player1.add_pawn_grid(grille, 1, 0)
     player2.add_pawn_grid(grille, 2, 3)
     player1.add_pawn_grid(grille, 1, 2)
+
+
+    jeu = Game(grille, player1, player2)
+    jeu.grid = grille
 
     print(grille)
 
@@ -51,4 +56,5 @@ if __name__ == "__main__":
     #print(jeu.count_diagonal_right_neighbour(grille, grille.matrix[2][2]))
     #print(jeu.checkLeftDiagonalWinner(grille, grille.matrix[3][3]))
 
-    print(jeu.checkWinner(grille, grille.matrix[3][3], player1, player2))
+    print(jeu.grid)
+    print(jeu.checkWinner(grille.matrix[3][3]))

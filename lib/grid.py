@@ -1,5 +1,4 @@
-from re import X
-from warnings import WarningMessage
+
 from lib.pawn import *
 
 class Grid:

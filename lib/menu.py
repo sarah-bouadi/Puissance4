@@ -7,7 +7,6 @@ Start game class, for the user interactions.
 
 """
 
-from curses.ascii import isdigit
 import lib.grid as grid
 import lib.save as save
 import lib.player as player

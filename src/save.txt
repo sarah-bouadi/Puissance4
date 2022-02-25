@@ -4,7 +4,7 @@ PLAYER1: sfd 1
 PLAYER2: cds 2
 GRID_SIZE: 4
 
- . , . , . , . ,
+ . , X , . , . ,
  . , X , O , . ,
  . , X , O , . ,
- . , X , X , X ,
+ X , X , X , X ,

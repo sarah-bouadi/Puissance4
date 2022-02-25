@@ -1,4 +1,10 @@
-.,.,.,.,
-X,X,.,O,
-X,.,O,.,
-X,O,.,O,
+SAVE DATE: 24/02/2022
+GAME MODE: Player VS Player
+PLAYER1: soul 1
+PLAYER2: juba 2
+GRID_SIZE: 4
+
+ . , . , . , . ,
+ . , . , . , . ,
+ . , . , O , . ,
+ O , X , X , . ,

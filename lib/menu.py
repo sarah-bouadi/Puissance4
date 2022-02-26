@@ -125,7 +125,7 @@ class Start_Game:
         if start_choice == 1:
             #Initialize grid
             print(colored("-****** Grid Size ******-", "blue"), end='\n\n')
-            grid_size = self.input_entering("- Please enter the grid size: ", list(range(100)))
+            grid_size = self.input_entering("- Please enter the grid size: ", list(range(4,100)))
             while int(grid_size)<=3:
                 print(colored("* Bad size input, you must enter size > 3. Please retry.", "red"),end='\n\n')
                 grid_size = self.input_entering("- Please enter the grid size: ", list(range(100)))

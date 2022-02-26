@@ -115,4 +115,4 @@ class Player:
             return False
 
     def __str__(self):
-        return "Name: {}; Color: {}".format(self.name, self.choosen_color)
+        return "{}".format(colored(self.name, "red") if self.choosen_color==1 else colored(self.name, "yellow"))

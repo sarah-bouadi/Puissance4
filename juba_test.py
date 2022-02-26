@@ -46,11 +46,31 @@ if __name__ == "__main__":
 
 
     uploadeDatas = uploadGame('src/save.txt')
+
     grille = uploadeDatas[0]
     player1 = uploadeDatas[1]
     player2 = uploadeDatas[2]
 
     jeu = Game(grille, player1, player2)
+    jeu.grid = grille
+    jeu.player1 = player1
+    jeu.player2 = player2
 
-    print(grille, player1, player2, grille.matrix[0][1])
-    print(jeu.checkWinner(grille, grille.matrix[0][1], player1, player2))
+    print(jeu.grid)
+
+    # for i in range(jeu.grid.getSize()):
+    #     for j in range(jeu.grid.getSize()):
+    #         print(jeu.grid.matrix[i][j], end=" ")
+    #     print("\n")
+
+    # print(jeu.getPawn(0, 0))    
+
+
+    # print(grille, player1, player2, grille.matrix[0][1])
+    # print(jeu.grid)
+    # test = jeu.getDownNeighbour(jeu.grid.matrix[1][3])
+    # test = jeu.getPawn(2, 3)
+    # print(jeu.grid.matrix[1][3].row, jeu.grid.matrix[1][3].column)
+    # print(test, type(test))
+    # print(jeu.getDownNeighbour(jeu.grid.matrix[1][2]))
+    print(jeu.checkWinner(jeu.grid.matrix[0][3]))

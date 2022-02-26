@@ -1,5 +1,5 @@
-from re import X
-from warnings import WarningMessage
+
+from ast import Str
 from lib.pawn import *
 
 class Grid:
@@ -54,13 +54,16 @@ class Grid:
     def display(self):
         grid_txt = ""
         self.grid_to_save = [[None]*self.grid_size for i in range(self.grid_size)]
-
+        import re
+        reaesc = re.compile(r'\x1b[^m]*m')
+        
         print("\n")
         for i in range(self.getSize()):
             for j in range(self.getSize()):
                 if isinstance(self.matrix[i][j], Pawn):
+                    current_pawn = reaesc.sub('', str(self.matrix[i][j]))
                     grid_txt += str(self.matrix[i][j])
-                    self.grid_to_save[i][j] = str(self.matrix[i][j])
+                    self.grid_to_save[i][j] = str(current_pawn)
                 else:
                     grid_txt += ' . '
                     self.grid_to_save[i][j] = ' . '
@@ -75,9 +78,15 @@ class Grid:
         for i in range(self.getSize()):
             for j in range(self.getSize()):
                 if grid_txt[i][j] == ' X ' :
-                    grid_object[i][j] = Pawn(1)
+                    new_pawn = Pawn(1)
+                    new_pawn.row = i
+                    new_pawn.column = j
+                    grid_object[i][j] = new_pawn
                 elif grid_txt[i][j] == ' O ' :
-                    grid_object[i][j] = Pawn(2)
+                    new_pawn = Pawn(2)
+                    new_pawn.row = i
+                    new_pawn.column = j
+                    grid_object[i][j] = new_pawn
                 else:
                     grid_object[i][j] = 'None'
         self.setMatrix(grid_object)

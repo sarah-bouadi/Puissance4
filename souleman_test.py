@@ -36,11 +36,13 @@ if __name__ == "__main__":
     print(grid)
     grid.display()
     saveGame('src/save.txt',grid, player1, player2)
-    player2.add_pawn_grid(grid, 2, 2)
-    player1.add_pawn_grid(grid, 1, 1)
+    player2.add_pawn_grid(grid, 2)
+    player1.add_pawn_grid(grid, 1)
     grid.display()
+
+    game = Game
     print(grid, grid.grid_to_save)
-    saveGame(grid, player1, player2)
+    saveGame('src/save.txt', game)
 
     # del grid, player1, player2
     # print("###################################")

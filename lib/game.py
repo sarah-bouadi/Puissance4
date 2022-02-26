@@ -299,9 +299,7 @@ class Game:
         :param color: the param to check
         :return: the associated player to the color in param
         """
-        player1 = self.player1
-        player2 = self.player2
-        return player1 if player1.choosen_color == color else player2
+        return self.player1 if COLORS_PAWN[self.player1.choosen_color] == color else self.player2
 
     def checkWinner(self, pawn):
         """

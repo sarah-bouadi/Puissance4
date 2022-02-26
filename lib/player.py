@@ -53,7 +53,7 @@ class Player:
         try:
             player1_name = input("- Enter the name of player 1: ")
             player1_choosen_color = input("- Select your color (1- for red, 2- for yellow):")
-            if player1_choosen_color not in [1,2]:
+            if int(player1_choosen_color) not in [1,2]:
                 player1_choosen_color = 1
 
             player2_name = input("- Enter the name of player 2: ")

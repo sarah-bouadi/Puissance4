@@ -1,0 +1,12 @@
+SAVE DATE: 26/02/2022
+GAME MODE: Player VS Player
+PLAYER1: SARAH 1
+PLAYER2: JUJU 2
+GRID_SIZE: 5
+LAST_PLAYED_PAWN_POSITION: -1 0
+
+ . | . | . | . | . |
+ X | . | . | . | . |
+ X | O | . | . | . |
+ X | O | . | . | . |
+ X | O | . | . | . |

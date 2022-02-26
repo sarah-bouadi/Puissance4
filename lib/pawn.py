@@ -1,7 +1,7 @@
 # Classe Pawn, represent the pawn, each one could be Yellow or Red
 from termcolor import colored
 
-COLORS = {1: "red", 2: "yellow"}
+COLORS_PAWN = {1: "red", 2: "yellow"}
 class Pawn:
 
     '''Constructor of the class'''
@@ -20,7 +20,7 @@ class Pawn:
 
         try:
             int(self.__color)
-            return COLORS[self.__color]
+            return COLORS_PAWN[self.__color]
         except Exception as e:
             print("Veuillez d'abord attribuer une couleur")
 

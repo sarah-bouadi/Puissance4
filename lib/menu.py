@@ -222,7 +222,7 @@ class Start_Game:
                 row = int(row) - 1
 
             self.last_pawn_played_position = (row, column_input)    
-            
+
             #Switch the players
             self.switch_player(self.game)
 
@@ -232,6 +232,8 @@ class Start_Game:
 
             #If the grid is full
             if self.game.grid.isFull():
+                if self.game.checkWinner(self.game.grid.getMatrix()[self.last_pawn_played_position[0]][self.last_pawn_played_position[1]]):
+                    break
                 print(colored("**** No Winners !****", "red"), end='\n\n')
                 entery = self.input_entering("Do you want to restart the game?(y/n)\n",['y','n'])
                 if entery == 'y':

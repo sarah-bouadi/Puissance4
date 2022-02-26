@@ -2,7 +2,7 @@
 from lib.pawn import *
 from lib.grid import *
 from lib.player import *
-
+from termcolor import *
 
 class Game:
 
@@ -38,7 +38,7 @@ class Game:
         """
         grid = self.grid 
         try:
-            if 0 <= column <= grid.getSize() and 0 <= row <= grid.getSize():
+            if 0 <= column < grid.getSize() and 0 <= row < grid.getSize():
                 if isinstance(grid.matrix[row][column], Pawn):
                     return grid.matrix[row][column]
                 return None
@@ -291,7 +291,6 @@ class Game:
                 :param pawn: the played pawn
                 :return: int 1 or 0
                 """
-        grid = self.grid
         return self.count_diagonal_right_neighbour(pawn) + 1 >= 4
 
     def getPlayerFromColor(self, color):
@@ -317,7 +316,8 @@ class Game:
 
             color = pawn.color
             player = self.getPlayerFromColor(color)
-            print(f"*** {player} you win the game ! ***")
+            print(self.grid, end='\n\n')
+            print(colored(f"*** {player}", "green"), colored("wins the game ! ***\n\n", "green"))
             return True
         else:
             return False

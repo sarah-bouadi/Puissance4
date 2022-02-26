@@ -1,11 +1,3 @@
-"""
-Author: TRAORE Souleman
-
-Date: 24.01.2022
-
-Contains Saving and uploading the game grid.
-
-"""
 
 from datetime import date
 from pprint import pprint
@@ -14,13 +6,11 @@ from lib.player import Player
 
 import os
 
-def saveGame(file_path, grid, player1, player2):
+def saveGame(file_path, game, last_pawn_played_position):
     """
     Save the content of the grid_matrix into src/save.txt
 
-    :param grid: the grid object to use the grid_matrix to save and the grid size
-    :param player1: the player 1 to use his datas
-    :param player2: the player 2 to use his datas
+    :param game: the game object to save 
 
     """
     with open(file_path, 'w') as f:
@@ -30,22 +20,25 @@ def saveGame(file_path, grid, player1, player2):
         f.write(f"SAVE DATE: {save_date}\n")
 
         #Game mode
-        if player2.name is None:
+        if game.player2.name is None:
             f.write("GAME MODE: Player VS Computer\n")
         else:
             f.write("GAME MODE: Player VS Player\n")
         
         #Players datas
-        f.write(f"PLAYER1: {player1.name} {player1.choosen_color}\n")
-        f.write(f"PLAYER2: {player2.name} {player2.choosen_color}\n")
+        f.write(f"PLAYER1: {game.player1.name} {game.player1.choosen_color}\n")
+        f.write(f"PLAYER2: {game.player2.name} {game.player2.choosen_color}\n")
 
         #Grid Size
-        f.write(f"GRID_SIZE: {grid.getSize()}\n\n")
+        f.write(f"GRID_SIZE: {game.grid.getSize()}\n")
+
+        #Last played pawn position
+        f.write(f"LAST_PLAYED_PAWN_POSITION: {last_pawn_played_position[0]} {last_pawn_played_position[1]}\n\n")
 
         #Grid matrix
-        for i in range(grid.getSize()):
-            for j in range(grid.getSize()):
-                f.write(grid.grid_to_save[i][j]+',')
+        for i in range(game.grid.getSize()):
+            for j in range(game.grid.getSize()):
+                f.write(game.grid.grid_to_save[i][j]+'|')
             f.write('\n')
 
 def uploadGame(file_path):
@@ -64,6 +57,7 @@ def uploadGame(file_path):
         player1_datas = (savefile[2]).split(" ")
         player2_datas = (savefile[3]).split(" ")
         grid_size = (savefile[4]).split(" ")
+        last_pawn_played_position = (savefile[5]).split(" ")
 
         #Charge players datas
         player1 = Player(player1_datas[1], player1_datas[2])
@@ -73,11 +67,14 @@ def uploadGame(file_path):
         else:
             player2 = Player(None, player2_datas[2])
 
+        #Charge the last played pawn position
+        pawn_position = (int(last_pawn_played_position[1]), int(last_pawn_played_position[2].strip('\n')))  
+
         #Charge grid
         grid = Grid(int(grid_size[1].replace('\n','')))
         result_grid = []
-        for i in savefile[6:]: 
-            row = i.split(',')
+        for i in savefile[7:]: 
+            row = i.split('|')
             result_grid.append(row[0:-1])
         grid.convert_gridtxt_gridobject(result_grid)
-        return (grid, player1, player2)
+        return (grid, player1, player2, pawn_position)

@@ -1,6 +1,3 @@
-
-
-from importlib_metadata import entry_points
 import lib.grid as grid
 import lib.save as save
 import lib.player as player

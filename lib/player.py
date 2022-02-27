@@ -104,15 +104,15 @@ class Player:
             row = grid.get_grid_row_from_column(column)
             if row is not None:
                 pawn.row = row
-                print("row:", pawn.row, "column:", column)
                 pawn.column = column
+                print("row:", pawn.row, "column:", pawn.column)
                 grid.matrix[row][column] = pawn
-                return True
+                return pawn
             else:
                 print("Column is full, please choose another column")
         except Exception as er:
             print(er)
-            return False
+            return None
 
     def __str__(self):
         return "{}".format(colored(self.name, "red") if self.choosen_color==1 else colored(self.name, "yellow"))

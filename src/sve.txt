@@ -1,0 +1,12 @@
+SAVE DATE: 27/02/2022
+GAME MODE: Player VS Player
+PLAYER1: tanjiro 1
+PLAYER2: zenitsu 2
+GRID_SIZE: 5
+LAST_PLAYED_PAWN_POSITION: 0 0
+
+ . | . | . | . | . |
+ . | . | . | . | . |
+ . | . | . | . | . |
+ . | . | O | . | . |
+ . | X | O | X | . |
